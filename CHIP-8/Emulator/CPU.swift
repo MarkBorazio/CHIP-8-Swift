@@ -9,16 +9,20 @@ import Foundation
 
 class CPU {
     
-    var v: [UInt8] = Array(repeating: 0, count: 16) // V registers
-    var i: UInt16 = 0 // I register
-    var pc: UInt16 = 0 // Program Counter
-    var sp: UInt8 = 0 // Stack Pointer
-    var dt: UInt8 = 0 // Delay Timer
-    var st: UInt8 = 0 // Sound Timer
+    var v: [UInt8] // V registers
+    var i: UInt16 // I register
+    var pc: UInt16 // Program Counter
+    var sp: UInt8 // Stack Pointer
+    var dt: UInt8 // Delay Timer
+    var st: UInt8 // Sound Timer
     
     init() {
-        // Set program counter to beginning of ROM
+        v = Array(repeating: 0, count: 16)
+        i = 0
         pc = Memory.startingRomAddress
+        sp = 0
+        dt = 0
+        st = 0
     }
     
     func cycle(memory: Memory) {
@@ -27,8 +31,7 @@ class CPU {
         let rawOpcode = memory.readOpcode(address: pc)
         let opcode = Opcode(rawOpcode: rawOpcode)
         
-        // Increment PC
-        pc += 2
+        incrementProgramCounter()
         
         switch(opcode.z) {
         case 0x0:
@@ -83,6 +86,10 @@ class CPU {
             }
         default: fatalError("Unrecognised opcode found. Got: \(rawOpcode)")
         }
+    }
+    
+    private func incrementProgramCounter() {
+        pc += 2
     }
 }
 

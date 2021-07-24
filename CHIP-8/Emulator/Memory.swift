@@ -22,7 +22,8 @@ class Memory {
         
         var data: [UInt8] = Array(repeating: 0, count: Self.memorySizeBytes)
         for i in 0...romBytes.count {
-            data[Self.startingRomAddress + i] = romBytes[i]
+            let offsetIndex = Int(Self.startingRomAddress) + i
+            data[offsetIndex] = romBytes[i]
         }
         
         self.data = data
