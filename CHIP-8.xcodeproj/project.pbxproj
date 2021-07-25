@@ -18,6 +18,34 @@
 		60C9593626AC4E80009D2989 /* Opcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C9593526AC4E80009D2989 /* Opcode.swift */; };
 		60C9593926AC5365009D2989 /* ByteConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C9593826AC5365009D2989 /* ByteConvertible.swift */; };
 		60C9593C26AC5622009D2989 /* Array+UIntSubscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C9593B26AC5622009D2989 /* Array+UIntSubscript.swift */; };
+		60C9593E26AD820D009D2989 /* Keypad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C9593D26AD820D009D2989 /* Keypad.swift */; };
+		60C9594026AD92F1009D2989 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C9593F26AD92F1009D2989 /* Video.swift */; };
+		60C9594226AD9DBB009D2989 /* BinaryInteger+BitMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C9594126AD9DBB009D2989 /* BinaryInteger+BitMapping.swift */; };
+		60C9595B26ADB218009D2989 /* BLITZ in Resources */ = {isa = PBXBuildFile; fileRef = 60C9594426ADB217009D2989 /* BLITZ */; };
+		60C9595C26ADB218009D2989 /* TANK in Resources */ = {isa = PBXBuildFile; fileRef = 60C9594526ADB217009D2989 /* TANK */; };
+		60C9595D26ADB218009D2989 /* PONG in Resources */ = {isa = PBXBuildFile; fileRef = 60C9594626ADB217009D2989 /* PONG */; };
+		60C9595E26ADB218009D2989 /* PUZZLE in Resources */ = {isa = PBXBuildFile; fileRef = 60C9594726ADB217009D2989 /* PUZZLE */; };
+		60C9595F26ADB218009D2989 /* TICTAC in Resources */ = {isa = PBXBuildFile; fileRef = 60C9594826ADB217009D2989 /* TICTAC */; };
+		60C9596026ADB218009D2989 /* TETRIS in Resources */ = {isa = PBXBuildFile; fileRef = 60C9594926ADB218009D2989 /* TETRIS */; };
+		60C9596126ADB218009D2989 /* MISSILE in Resources */ = {isa = PBXBuildFile; fileRef = 60C9594A26ADB218009D2989 /* MISSILE */; };
+		60C9596226ADB218009D2989 /* BRIX in Resources */ = {isa = PBXBuildFile; fileRef = 60C9594B26ADB218009D2989 /* BRIX */; };
+		60C9596326ADB218009D2989 /* MAZE in Resources */ = {isa = PBXBuildFile; fileRef = 60C9594C26ADB218009D2989 /* MAZE */; };
+		60C9596426ADB218009D2989 /* VERS in Resources */ = {isa = PBXBuildFile; fileRef = 60C9594D26ADB218009D2989 /* VERS */; };
+		60C9596526ADB218009D2989 /* KALEID in Resources */ = {isa = PBXBuildFile; fileRef = 60C9594E26ADB218009D2989 /* KALEID */; };
+		60C9596626ADB218009D2989 /* HIDDEN in Resources */ = {isa = PBXBuildFile; fileRef = 60C9594F26ADB218009D2989 /* HIDDEN */; };
+		60C9596726ADB218009D2989 /* PONG2 in Resources */ = {isa = PBXBuildFile; fileRef = 60C9595026ADB218009D2989 /* PONG2 */; };
+		60C9596826ADB218009D2989 /* WIPEOFF in Resources */ = {isa = PBXBuildFile; fileRef = 60C9595126ADB218009D2989 /* WIPEOFF */; };
+		60C9596926ADB218009D2989 /* 15PUZZLE in Resources */ = {isa = PBXBuildFile; fileRef = 60C9595226ADB218009D2989 /* 15PUZZLE */; };
+		60C9596A26ADB218009D2989 /* INVADERS in Resources */ = {isa = PBXBuildFile; fileRef = 60C9595326ADB218009D2989 /* INVADERS */; };
+		60C9596B26ADB218009D2989 /* CONNECT4 in Resources */ = {isa = PBXBuildFile; fileRef = 60C9595426ADB218009D2989 /* CONNECT4 */; };
+		60C9596C26ADB218009D2989 /* MERLIN in Resources */ = {isa = PBXBuildFile; fileRef = 60C9595526ADB218009D2989 /* MERLIN */; };
+		60C9596D26ADB218009D2989 /* BLINKY in Resources */ = {isa = PBXBuildFile; fileRef = 60C9595626ADB218009D2989 /* BLINKY */; };
+		60C9596E26ADB218009D2989 /* SYZYGY in Resources */ = {isa = PBXBuildFile; fileRef = 60C9595726ADB218009D2989 /* SYZYGY */; };
+		60C9596F26ADB218009D2989 /* GUESS in Resources */ = {isa = PBXBuildFile; fileRef = 60C9595826ADB218009D2989 /* GUESS */; };
+		60C9597026ADB218009D2989 /* UFO in Resources */ = {isa = PBXBuildFile; fileRef = 60C9595926ADB218009D2989 /* UFO */; };
+		60C9597126ADB218009D2989 /* VBRIX in Resources */ = {isa = PBXBuildFile; fileRef = 60C9595A26ADB218009D2989 /* VBRIX */; };
+		60C9597326ADB236009D2989 /* ROM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C9597226ADB236009D2989 /* ROM.swift */; };
+		60C9597526ADB763009D2989 /* Number+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C9597426ADB763009D2989 /* Number+HexString.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +84,34 @@
 		60C9593526AC4E80009D2989 /* Opcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opcode.swift; sourceTree = "<group>"; };
 		60C9593826AC5365009D2989 /* ByteConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByteConvertible.swift; sourceTree = "<group>"; };
 		60C9593B26AC5622009D2989 /* Array+UIntSubscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+UIntSubscript.swift"; sourceTree = "<group>"; };
+		60C9593D26AD820D009D2989 /* Keypad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keypad.swift; sourceTree = "<group>"; };
+		60C9593F26AD92F1009D2989 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		60C9594126AD9DBB009D2989 /* BinaryInteger+BitMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BinaryInteger+BitMapping.swift"; sourceTree = "<group>"; };
+		60C9594426ADB217009D2989 /* BLITZ */ = {isa = PBXFileReference; lastKnownFileType = file; path = BLITZ; sourceTree = "<group>"; };
+		60C9594526ADB217009D2989 /* TANK */ = {isa = PBXFileReference; lastKnownFileType = file; path = TANK; sourceTree = "<group>"; };
+		60C9594626ADB217009D2989 /* PONG */ = {isa = PBXFileReference; lastKnownFileType = file; path = PONG; sourceTree = "<group>"; };
+		60C9594726ADB217009D2989 /* PUZZLE */ = {isa = PBXFileReference; lastKnownFileType = file; path = PUZZLE; sourceTree = "<group>"; };
+		60C9594826ADB217009D2989 /* TICTAC */ = {isa = PBXFileReference; lastKnownFileType = file; path = TICTAC; sourceTree = "<group>"; };
+		60C9594926ADB218009D2989 /* TETRIS */ = {isa = PBXFileReference; lastKnownFileType = file; path = TETRIS; sourceTree = "<group>"; };
+		60C9594A26ADB218009D2989 /* MISSILE */ = {isa = PBXFileReference; lastKnownFileType = file; path = MISSILE; sourceTree = "<group>"; };
+		60C9594B26ADB218009D2989 /* BRIX */ = {isa = PBXFileReference; lastKnownFileType = file; path = BRIX; sourceTree = "<group>"; };
+		60C9594C26ADB218009D2989 /* MAZE */ = {isa = PBXFileReference; lastKnownFileType = file; path = MAZE; sourceTree = "<group>"; };
+		60C9594D26ADB218009D2989 /* VERS */ = {isa = PBXFileReference; lastKnownFileType = file; path = VERS; sourceTree = "<group>"; };
+		60C9594E26ADB218009D2989 /* KALEID */ = {isa = PBXFileReference; lastKnownFileType = file; path = KALEID; sourceTree = "<group>"; };
+		60C9594F26ADB218009D2989 /* HIDDEN */ = {isa = PBXFileReference; lastKnownFileType = file; path = HIDDEN; sourceTree = "<group>"; };
+		60C9595026ADB218009D2989 /* PONG2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = PONG2; sourceTree = "<group>"; };
+		60C9595126ADB218009D2989 /* WIPEOFF */ = {isa = PBXFileReference; lastKnownFileType = file; path = WIPEOFF; sourceTree = "<group>"; };
+		60C9595226ADB218009D2989 /* 15PUZZLE */ = {isa = PBXFileReference; lastKnownFileType = file; path = 15PUZZLE; sourceTree = "<group>"; };
+		60C9595326ADB218009D2989 /* INVADERS */ = {isa = PBXFileReference; lastKnownFileType = file; path = INVADERS; sourceTree = "<group>"; };
+		60C9595426ADB218009D2989 /* CONNECT4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = CONNECT4; sourceTree = "<group>"; };
+		60C9595526ADB218009D2989 /* MERLIN */ = {isa = PBXFileReference; lastKnownFileType = file; path = MERLIN; sourceTree = "<group>"; };
+		60C9595626ADB218009D2989 /* BLINKY */ = {isa = PBXFileReference; lastKnownFileType = file; path = BLINKY; sourceTree = "<group>"; };
+		60C9595726ADB218009D2989 /* SYZYGY */ = {isa = PBXFileReference; lastKnownFileType = file; path = SYZYGY; sourceTree = "<group>"; };
+		60C9595826ADB218009D2989 /* GUESS */ = {isa = PBXFileReference; lastKnownFileType = file; path = GUESS; sourceTree = "<group>"; };
+		60C9595926ADB218009D2989 /* UFO */ = {isa = PBXFileReference; lastKnownFileType = file; path = UFO; sourceTree = "<group>"; };
+		60C9595A26ADB218009D2989 /* VBRIX */ = {isa = PBXFileReference; lastKnownFileType = file; path = VBRIX; sourceTree = "<group>"; };
+		60C9597226ADB236009D2989 /* ROM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ROM.swift; sourceTree = "<group>"; };
+		60C9597426ADB763009D2989 /* Number+HexString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+HexString.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +162,7 @@
 		60C9590326AC4677009D2989 /* CHIP-8 */ = {
 			isa = PBXGroup;
 			children = (
+				60C9594326ADB209009D2989 /* ROMs */,
 				60C9593026AC49F4009D2989 /* Emulator */,
 				60C9593A26AC55F9009D2989 /* Extensions */,
 				60C9593726AC52C8009D2989 /* Utilities */,
@@ -140,9 +197,12 @@
 		60C9593026AC49F4009D2989 /* Emulator */ = {
 			isa = PBXGroup;
 			children = (
-				60C9593126AC4A29009D2989 /* Memory.swift */,
 				60C9593326AC4D11009D2989 /* CPU.swift */,
+				60C9593D26AD820D009D2989 /* Keypad.swift */,
+				60C9593126AC4A29009D2989 /* Memory.swift */,
 				60C9593526AC4E80009D2989 /* Opcode.swift */,
+				60C9597226ADB236009D2989 /* ROM.swift */,
+				60C9593F26AD92F1009D2989 /* Video.swift */,
 			);
 			path = Emulator;
 			sourceTree = "<group>";
@@ -159,8 +219,40 @@
 			isa = PBXGroup;
 			children = (
 				60C9593B26AC5622009D2989 /* Array+UIntSubscript.swift */,
+				60C9594126AD9DBB009D2989 /* BinaryInteger+BitMapping.swift */,
+				60C9597426ADB763009D2989 /* Number+HexString.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		60C9594326ADB209009D2989 /* ROMs */ = {
+			isa = PBXGroup;
+			children = (
+				60C9595226ADB218009D2989 /* 15PUZZLE */,
+				60C9595626ADB218009D2989 /* BLINKY */,
+				60C9594426ADB217009D2989 /* BLITZ */,
+				60C9594B26ADB218009D2989 /* BRIX */,
+				60C9595426ADB218009D2989 /* CONNECT4 */,
+				60C9595826ADB218009D2989 /* GUESS */,
+				60C9594F26ADB218009D2989 /* HIDDEN */,
+				60C9595326ADB218009D2989 /* INVADERS */,
+				60C9594E26ADB218009D2989 /* KALEID */,
+				60C9594C26ADB218009D2989 /* MAZE */,
+				60C9595526ADB218009D2989 /* MERLIN */,
+				60C9594A26ADB218009D2989 /* MISSILE */,
+				60C9594626ADB217009D2989 /* PONG */,
+				60C9595026ADB218009D2989 /* PONG2 */,
+				60C9594726ADB217009D2989 /* PUZZLE */,
+				60C9595726ADB218009D2989 /* SYZYGY */,
+				60C9594526ADB217009D2989 /* TANK */,
+				60C9594926ADB218009D2989 /* TETRIS */,
+				60C9594826ADB217009D2989 /* TICTAC */,
+				60C9595926ADB218009D2989 /* UFO */,
+				60C9595A26ADB218009D2989 /* VBRIX */,
+				60C9594D26ADB218009D2989 /* VERS */,
+				60C9595126ADB218009D2989 /* WIPEOFF */,
+			);
+			path = ROMs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,8 +358,31 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60C9596F26ADB218009D2989 /* GUESS in Resources */,
+				60C9596926ADB218009D2989 /* 15PUZZLE in Resources */,
+				60C9596D26ADB218009D2989 /* BLINKY in Resources */,
+				60C9597126ADB218009D2989 /* VBRIX in Resources */,
+				60C9596526ADB218009D2989 /* KALEID in Resources */,
+				60C9595B26ADB218009D2989 /* BLITZ in Resources */,
+				60C9596326ADB218009D2989 /* MAZE in Resources */,
+				60C9596726ADB218009D2989 /* PONG2 in Resources */,
+				60C9596C26ADB218009D2989 /* MERLIN in Resources */,
+				60C9596026ADB218009D2989 /* TETRIS in Resources */,
+				60C9596A26ADB218009D2989 /* INVADERS in Resources */,
+				60C9595D26ADB218009D2989 /* PONG in Resources */,
+				60C9596426ADB218009D2989 /* VERS in Resources */,
+				60C9596826ADB218009D2989 /* WIPEOFF in Resources */,
+				60C9596626ADB218009D2989 /* HIDDEN in Resources */,
+				60C9596126ADB218009D2989 /* MISSILE in Resources */,
+				60C9595E26ADB218009D2989 /* PUZZLE in Resources */,
+				60C9596B26ADB218009D2989 /* CONNECT4 in Resources */,
+				60C9596226ADB218009D2989 /* BRIX in Resources */,
 				60C9590926AC4678009D2989 /* Assets.xcassets in Resources */,
+				60C9595C26ADB218009D2989 /* TANK in Resources */,
 				60C9590C26AC4678009D2989 /* Main.storyboard in Resources */,
+				60C9597026ADB218009D2989 /* UFO in Resources */,
+				60C9595F26ADB218009D2989 /* TICTAC in Resources */,
+				60C9596E26ADB218009D2989 /* SYZYGY in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,13 +407,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60C9597526ADB763009D2989 /* Number+HexString.swift in Sources */,
 				60C9593426AC4D11009D2989 /* CPU.swift in Sources */,
 				60C9593926AC5365009D2989 /* ByteConvertible.swift in Sources */,
+				60C9594226AD9DBB009D2989 /* BinaryInteger+BitMapping.swift in Sources */,
 				60C9590726AC4677009D2989 /* ViewController.swift in Sources */,
 				60C9590526AC4677009D2989 /* AppDelegate.swift in Sources */,
+				60C9594026AD92F1009D2989 /* Video.swift in Sources */,
 				60C9593626AC4E80009D2989 /* Opcode.swift in Sources */,
+				60C9593E26AD820D009D2989 /* Keypad.swift in Sources */,
 				60C9593226AC4A29009D2989 /* Memory.swift in Sources */,
 				60C9593C26AC5622009D2989 /* Array+UIntSubscript.swift in Sources */,
+				60C9597326ADB236009D2989 /* ROM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
