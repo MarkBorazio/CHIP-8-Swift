@@ -11,9 +11,9 @@ struct ROM {
     
     let bytes: [UInt8]
     
-    init(fileName: String) {
+    init(fileName: String) throws {
         let url = Bundle.main.url(forResource: fileName, withExtension: nil)!
-        let romData = try! Data(contentsOf: url)
+        let romData = try Data(contentsOf: url)
         bytes = [UInt8](romData)
     }
 }

@@ -17,6 +17,8 @@ class Video {
     
     /// Returns true if there was a collision
     func drawSpriteReportingCollision(data: [UInt8], xCo: UInt8, yCo: UInt8) -> Bool {
+        var newDisplay = display
+        
         let boolData = data.map { $0.asBoolArray }
         let spriteWidth = boolData[0].count
         let spriteHeight = boolData.count
@@ -29,14 +31,15 @@ class Video {
             for spriteX in 0..<spriteWidth {
                 let wrappedX = Self.wrappedCoordinate(spriteCoord: spriteX, originCoord: Int(xCo), coordBound: Self.width)
                 
-                let currentValue = display[wrappedY][wrappedX]
+                let currentValue = newDisplay[wrappedY][wrappedX]
                 let newValue = currentValue != boolData[spriteY][spriteX]
                 
                 collisionDetected = collisionDetected || (currentValue && !newValue)
-                display[wrappedY][wrappedX] = newValue
+                newDisplay[wrappedY][wrappedX] = newValue
             }
         }
         
+        display = newDisplay
         return collisionDetected
     }
     

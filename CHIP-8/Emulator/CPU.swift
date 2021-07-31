@@ -9,44 +9,59 @@ import Foundation
 
 class CPU {
     
-    weak var crappyDelegate: CrappyDelegate?
-    
     private static let frequencyMicroSeconds: UInt32 = 16667 // 60Hz
     
-    var memory: Memory = Memory(rom: ROM(fileName: "CONNECT4"))
-    let keypad: Keypad = Keypad()
-    var video: Video = Video()
+    // CHIP-8 Components
+    private let memory: Memory
+    private let keypad: Keypad
+    private let video: Video
+    private let audio: Audio
     
-    var v: [UInt8] = Array(repeating: 0, count: 16) // V registers
-    var i: UInt16 = 0 // I register
-    var pc: UInt16 = Memory.startingRomAddress // Program Counter
-    var sp: UInt8 = 0 // Stack Pointer
-    var dt: UInt8 = 0 // Delay Timer
-    var st: UInt8 = 0 // Sound Timer
-    var stack: [UInt16] = Array(repeating: 0, count: 16)
+    // Registers
+    private var v: [UInt8] = Array(repeating: 0, count: 16) // V registers
+    private var i: UInt16 = 0 // I register
+    private var pc: UInt16 = Memory.startingRomAddress // Program Counter
+    private var sp: UInt8 = 0 // Stack Pointer
+    private var dt: UInt8 = 0 // Delay Timer
+    private var st: UInt8 = 0 // Sound Timer
+    private var stack: [UInt16] = Array(repeating: 0, count: 16)
     
-    var registerAwaitingKeyPressValue: UInt8?
-    
+    // State
+    private var registerAwaitingKeyPressValue: UInt8?
     private var isTicking = false
+    private var isResetting = false
+    
+    weak var delegate: CPUDelegate?
+    
+    init(memory: Memory, video: Video, audio: Audio, keypad: Keypad) {
+        self.memory = memory
+        self.keypad = keypad
+        self.video = video
+        self.audio = audio
+    }
     
     func startTicking() {
+        guard memory.isRomLoaded, !isTicking else { return }
+        
         isTicking = true
-        DispatchQueue.global(qos: .userInitiated) .async { [weak self] in
-            guard let self = self else { fatalError() }
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let self = self else { return }
             while self.isTicking {
                 self.tick()
                 usleep(Self.frequencyMicroSeconds)
+            }
+            if self.isResetting {
+                self.clearStates()
             }
         }
     }
     
     func stopTicking() {
+        guard memory.isRomLoaded, isTicking else { return }
         isTicking = false
     }
     
     private func tick() {
-        print("TICK: \(DispatchTime.now())")
-        
         // 9 cycles occur per tick
         cycle()
         cycle()
@@ -63,10 +78,13 @@ class CPU {
         }
         
         if st > 0 {
+            audio.startTone()
             st -= 1
+        } else {
+            audio.stopTone()
         }
         
-        crappyDelegate?.draw(pixels: video.display)
+        delegate?.draw(pixelArray: video.display)
     }
     
     private func cycle() {
@@ -81,9 +99,6 @@ class CPU {
         
         // Read the 2 byte opcode at the PC
         let opcode = memory.readOpcode(address: pc)
-        
-//        print("PC: \(pc.asHexString())")
-        print(opcode.rawOpcodeString)
         
         incrementProgramCounter()
         
@@ -162,79 +177,79 @@ class CPU {
 
 extension CPU {
     
-    func clearDisplay() {
+    private func clearDisplay() {
         video.clearDisplay()
     }
     
-    func returnFromSubroutine() {
+    private func returnFromSubroutine() {
         let address = stack[sp]
         pc = address
         sp -= 1
     }
     
-    func setPcToVal(nnn: UInt16) {
+    private func setPcToVal(nnn: UInt16) {
         pc = nnn
     }
     
-    func callSubroutine(nnn: UInt16) {
+    private func callSubroutine(nnn: UInt16) {
         sp += 1
         stack[sp] = pc
         pc = nnn
     }
     
-    func skipNextInstructionIfVxEqualsVal(x: UInt8, kk: UInt8) {
+    private func skipNextInstructionIfVxEqualsVal(x: UInt8, kk: UInt8) {
         if v[x] == kk {
             incrementProgramCounter()
         }
     }
     
-    func skipNextInstructionIfVxNotEqualsVal(x: UInt8, kk: UInt8) {
+    private func skipNextInstructionIfVxNotEqualsVal(x: UInt8, kk: UInt8) {
         if v[x] != kk {
             incrementProgramCounter()
         }
     }
     
-    func skipNextInstructionIfVxEqualsVy(x: UInt8, y: UInt8) {
+    private func skipNextInstructionIfVxEqualsVy(x: UInt8, y: UInt8) {
         if v[x] == v[y] {
             incrementProgramCounter()
         }
     }
     
-    func setVxToVal(x: UInt8, kk: UInt8) {
+    private func setVxToVal(x: UInt8, kk: UInt8) {
         v[x] = kk
     }
     
-    func addValToVx(x: UInt8, kk: UInt8) {
+    private func addValToVx(x: UInt8, kk: UInt8) {
         let vx = v[x]
         v[x] = vx &+ kk
     }
     
-    func setVxToVy(x: UInt8, y: UInt8) {
+    private func setVxToVy(x: UInt8, y: UInt8) {
         v[x] = v[y]
     }
     
-    func setVxToVxOrVy(x: UInt8, y: UInt8) {
+    private func setVxToVxOrVy(x: UInt8, y: UInt8) {
         let vx = v[x]
         v[x] = vx | v[y]
     }
     
-    func setVxToVxAndVy(x: UInt8, y: UInt8) {
+    private func setVxToVxAndVy(x: UInt8, y: UInt8) {
         let vx = v[x]
         v[x] = vx & v[y]
     }
     
-    func setVxToVxXorVy(x: UInt8, y: UInt8) {
+    private func setVxToVxXorVy(x: UInt8, y: UInt8) {
         let vx = v[x]
         v[x] = vx ^ v[y]
     }
     
-    func setVxToVxPlusVy(x: UInt8, y: UInt8) {
+    private func setVxToVxPlusVy(x: UInt8, y: UInt8) {
         let (value, overflow) = v[x].addingReportingOverflow(v[y])
         v[0xF] = overflow ? 1 : 0
         v[x] = value
     }
     
-    func setVxToVxMinusVy(x: UInt8, y: UInt8) {
+    private func setVxToVxMinusVy(x: UInt8, y: UInt8) {
         let borrow = v[x] > v[y]
         v[0xF] = borrow ? 1 : 0
         
@@ -243,12 +258,12 @@ extension CPU {
     }
     
     // TODO: Last bit of Vy or Vx???
-    func setVxToVyShiftedRight(x: UInt8, y: UInt8) {
+    private func setVxToVyShiftedRight(x: UInt8, y: UInt8) {
         v[0xF] = v[y] & 0b1
         v[x] = v[y] >> 1
     }
     
-    func setVxToVyMinusVx(x: UInt8, y: UInt8) {
+    private func setVxToVyMinusVx(x: UInt8, y: UInt8) {
         let borrow = v[y] > v[x]
         v[0xF] = borrow ? 1 : 0
         
@@ -256,32 +271,32 @@ extension CPU {
         v[x] = value
     }
     
-    func setVxToVyShiftedLeft(x: UInt8, y: UInt8) {
+    private func setVxToVyShiftedLeft(x: UInt8, y: UInt8) {
         v[0xF] = v[y] >> 7
         v[x] = v[y] << 1
     }
     
-    func skipNextInstructionIfVxNotEqualsVy(x: UInt8, y: UInt8) {
+    private func skipNextInstructionIfVxNotEqualsVy(x: UInt8, y: UInt8) {
         if v[x] != v[y] {
             incrementProgramCounter()
         }
     }
     
-    func setIRegToVal(nnn: UInt16) {
+    private func setIRegToVal(nnn: UInt16) {
         i = nnn
     }
     
-    func setPcToValPlusV0(nnn: UInt16) {
+    private func setPcToValPlusV0(nnn: UInt16) {
         pc = nnn &+ UInt16(v[0])
     }
     
-    func setVxToRandomByteAndVal(x: UInt8, kk: UInt8) {
+    private func setVxToRandomByteAndVal(x: UInt8, kk: UInt8) {
         let randomByte = UInt8.random(in: UInt8.min ... UInt8.max)
         v[x] = kk & randomByte
     }
     
-    func draw(x: UInt8, y: UInt8, n: UInt8) {
-        let spriteData = (0...n).map { offset -> UInt8 in
+    private func draw(x: UInt8, y: UInt8, n: UInt8) {
+        let spriteData = (0..<n).map { offset -> UInt8 in
             let index = i + UInt16(offset)
             return memory.data[index]
         }
@@ -293,68 +308,98 @@ extension CPU {
         v[0xF] = collision ? 1 : 0
     }
     
-    func skipNextInstructionIfKeyPressed(x: UInt8) {
+    private func skipNextInstructionIfKeyPressed(x: UInt8) {
         let isPressed = keypad.getKeyPressState(keyValue: v[x])
         if isPressed {
             incrementProgramCounter()
         }
     }
     
-    func skipNextInstructionIfKeyNotPressed(x: UInt8) {
+    private func skipNextInstructionIfKeyNotPressed(x: UInt8) {
         let isPressed = keypad.getKeyPressState(keyValue: v[x])
         if !isPressed {
             incrementProgramCounter()
         }
     }
     
-    func setVxToDt(x: UInt8) {
+    private func setVxToDt(x: UInt8) {
         v[x] = dt
     }
     
-    func setVxToPressedKeyValue(x: UInt8) {
+    private func setVxToPressedKeyValue(x: UInt8) {
         registerAwaitingKeyPressValue = x
         checkKeyPress(register: x)
     }
     
-    func setDtToVx(x: UInt8) {
+    private func setDtToVx(x: UInt8) {
         dt = v[x]
     }
     
-    func setStToVx(x: UInt8) {
+    private func setStToVx(x: UInt8) {
         st = v[x]
     }
     
-    func setIRegToIRegPlusVx(x: UInt8) {
+    private func setIRegToIRegPlusVx(x: UInt8) {
         let value = i &+ UInt16(v[x])
         i = value
     }
     
-    func setIRegToAddressOfSpriteForVx(x: UInt8) {
+    private func setIRegToAddressOfSpriteForVx(x: UInt8) {
         let spriteValue = v[x]
         let spriteAddress = UInt16(spriteValue * 5)
         i = spriteAddress
     }
     
-    func storeBCDRepresentationOfVx(x: UInt8) {
+    private func storeBCDRepresentationOfVx(x: UInt8) {
         memory.data[i] = (v[x] / 100) % 10 // Hundreds digit
         memory.data[i+1] = (v[x] / 10) % 10 // Tens digit
         memory.data[i+2] = v[x] % 10 // Ones digit
     }
     
-    func storeAllVRegistersUpToVx(x: UInt8) {
+    private func storeAllVRegistersUpToVx(x: UInt8) {
         (0...x).forEach {
             memory.data[i+UInt16($0)] = v[$0]
         }
     }
     
-    func setAllVRegistersUpToVx(x: UInt8) {
+    private func setAllVRegistersUpToVx(x: UInt8) {
         (0...x).forEach {
             v[$0] = memory.data[i+UInt16($0)]
         }
     }
 }
 
+// MARK: - Reset
 
-protocol CrappyDelegate: AnyObject {
-    func draw(pixels: [[Bool]])
+extension CPU {
+    
+    func reset() {
+        // Need to wait for current tick to complete before clearing anything.
+        isTicking = false
+        isResetting = true
+    }
+    
+    private func clearStates() {
+        isTicking = false
+        isResetting = false
+        registerAwaitingKeyPressValue = nil
+        
+        v = Array(repeating: 0, count: 16)
+        i = 0
+        pc = Memory.startingRomAddress
+        sp = 0
+        dt = 0
+        st = 0
+        stack = Array(repeating: 0, count: 16)
+        
+        video.clearDisplay()
+        audio.stopTone()
+        memory.reset()
+        
+        startTicking()
+    }
+}
+
+protocol CPUDelegate: AnyObject {
+    func draw(pixelArray: [[Bool]])
 }

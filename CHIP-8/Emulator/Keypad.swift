@@ -26,39 +26,24 @@ class Keypad {
     private var keyE: Bool = false
     private var keyF: Bool = false
     
-    init() {
-        NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
-            guard let keyValue = event.characters?.first else { return event }
-            self?.setKeyPressState(keyValue: keyValue, isPressed: true)
-            return event
-        }
-        
-        NSEvent.addLocalMonitorForEvents(matching: .keyUp) { [weak self] event in
-            guard let keyValue = event.characters?.first else { return event }
-            self?.setKeyPressState(keyValue: keyValue, isPressed: false)
-            return event
-        }
-    }
-    
-    private func setKeyPressState(keyValue: Character, isPressed: Bool) {
-        switch(keyValue.uppercased()) {
-        case "0": self.key0 = isPressed
-        case "1": self.key1 = isPressed
-        case "2": self.key2 = isPressed
-        case "3": self.key3 = isPressed
-        case "4": self.key4 = isPressed
-        case "5": self.key5 = isPressed
-        case "6": self.key6 = isPressed
-        case "7": self.key7 = isPressed
-        case "8": self.key8 = isPressed
-        case "9": self.key9 = isPressed
-        case "A": self.keyA = isPressed
-        case "B": self.keyB = isPressed
-        case "C": self.keyC = isPressed
-        case "D": self.keyD = isPressed
-        case "E": self.keyE = isPressed
-        case "F": self.keyF = isPressed
-        default: break
+    func setKeyPressState(key: Key, isPressed: Bool) {
+        switch(key) {
+        case .zero: self.key0 = isPressed
+        case .one: self.key1 = isPressed
+        case .two: self.key2 = isPressed
+        case .three: self.key3 = isPressed
+        case .four: self.key4 = isPressed
+        case .five: self.key5 = isPressed
+        case .six: self.key6 = isPressed
+        case .seven: self.key7 = isPressed
+        case .eight: self.key8 = isPressed
+        case .nine: self.key9 = isPressed
+        case .a: self.keyA = isPressed
+        case .b: self.keyB = isPressed
+        case .c: self.keyC = isPressed
+        case .d: self.keyD = isPressed
+        case .e: self.keyE = isPressed
+        case .f: self.keyF = isPressed
         }
     }
     
@@ -82,5 +67,29 @@ class Keypad {
         case 0xF: return keyF
         default: fatalError()
         }
+    }
+}
+
+// MARK: - Keys
+
+extension Keypad {
+    
+    enum Key: Character {
+        case zero = "0"
+        case one = "1"
+        case two = "2"
+        case three = "3"
+        case four = "4"
+        case five = "5"
+        case six = "6"
+        case seven = "7"
+        case eight = "8"
+        case nine = "9"
+        case a = "A"
+        case b = "B"
+        case c = "C"
+        case d = "D"
+        case e = "E"
+        case f = "F"
     }
 }

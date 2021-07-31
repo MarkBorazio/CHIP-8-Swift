@@ -14,9 +14,16 @@ class Memory {
     
     var data: [UInt8]
     
-    init(rom: ROM) {
-        
+    private var rom: ROM?
+    var isRomLoaded = false
+    
+    init() {
         data = Array(repeating: 0, count: Self.memorySizeBytes)
+    }
+    
+    func loadRom(rom: ROM) {
+        data = Array(repeating: 0, count: Self.memorySizeBytes)
+        self.rom = rom
         
         // Load sprite data into memory starting at 0x0000
         Self.allSprites
@@ -31,6 +38,13 @@ class Memory {
             let offsetIndex = Int(Self.startingRomAddress) + index
             data[offsetIndex] = value
         }
+        
+        isRomLoaded = true
+    }
+    
+    func reset() {
+        guard let rom = rom else { return }
+        loadRom(rom: rom)
     }
     
     func readOpcode(address: UInt16) -> Opcode {
