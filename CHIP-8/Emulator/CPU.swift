@@ -29,8 +29,8 @@ class CPU {
     // State
     private var registerAwaitingKeyPressValue: UInt8?
     private var isTicking = false
-    private var isResetting = false
     
+    private let dispatchQueue = DispatchQueue(label: "CHIP-8 CPU", qos: .userInitiated)
     weak var delegate: CPUDelegate?
     
     init(memory: Memory, video: Video, audio: Audio, keypad: Keypad) {
@@ -41,50 +41,54 @@ class CPU {
     }
     
     func startTicking() {
-        guard memory.isRomLoaded, !isTicking else { return }
-        
-        isTicking = true
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let self = self else { return }
+            guard self.memory.isRomLoaded, !self.isTicking else { return }
+
+            self.isTicking = true
             while self.isTicking {
                 self.tick()
                 usleep(Self.frequencyMicroSeconds)
-            }
-            if self.isResetting {
-                self.clearStates()
             }
         }
     }
     
     func stopTicking() {
-        guard memory.isRomLoaded, isTicking else { return }
-        isTicking = false
+        dispatchQueue.sync {
+            guard isTicking else { return }
+            isTicking = false
+        }
     }
     
     private func tick() {
-        // 9 cycles occur per tick
-        cycle()
-        cycle()
-        cycle()
-        cycle()
-        cycle()
-        cycle()
-        cycle()
-        cycle()
-        cycle()
-        
-        if dt > 0 {
-            dt -= 1
+        dispatchQueue.sync {
+            // 9 cycles occur per tick
+            cycle()
+            cycle()
+            cycle()
+            cycle()
+            cycle()
+            cycle()
+            cycle()
+            cycle()
+            cycle()
+            
+            if dt > 0 {
+                dt -= 1
+            }
+            
+            if st > 0 {
+                audio.startTone()
+                st -= 1
+            } else {
+                audio.stopTone()
+            }
+            
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.delegate?.draw(pixelArray: self.video.display)
+            }
         }
-        
-        if st > 0 {
-            audio.startTone()
-            st -= 1
-        } else {
-            audio.stopTone()
-        }
-        
-        delegate?.draw(pixelArray: video.display)
     }
     
     private func cycle() {
@@ -374,29 +378,25 @@ extension CPU {
 extension CPU {
     
     func reset() {
-        // Need to wait for current tick to complete before clearing anything.
-        isTicking = false
-        isResetting = true
-    }
-    
-    private func clearStates() {
-        isTicking = false
-        isResetting = false
-        registerAwaitingKeyPressValue = nil
-        
-        v = Array(repeating: 0, count: 16)
-        i = 0
-        pc = Memory.startingRomAddress
-        sp = 0
-        dt = 0
-        st = 0
-        stack = Array(repeating: 0, count: 16)
-        
-        video.clearDisplay()
-        audio.stopTone()
-        memory.reset()
-        
-        startTicking()
+        dispatchQueue.sync {
+            isTicking = false
+            registerAwaitingKeyPressValue = nil
+            
+            v = Array(repeating: 0, count: 16)
+            i = 0
+            pc = Memory.startingRomAddress
+            sp = 0
+            dt = 0
+            st = 0
+            stack = Array(repeating: 0, count: 16)
+            
+            video.clearDisplay()
+            audio.stopTone()
+            memory.reset()
+            
+            // Clear display
+            delegate?.draw(pixelArray: video.display)
+        }
     }
 }
 
