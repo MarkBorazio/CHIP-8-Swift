@@ -17,8 +17,8 @@ class ViewController: NSViewController {
         super.viewDidLoad()
 
         chip8.delegate = chip8View
-        chip8View.imageScaling = .scaleProportionallyUpOrDown
-        try! chip8.loadRomFile(fileName: "PONG")
+        
+        try! chip8.loadRomFile(fileName: "UFO")
         
         NSEvent.addLocalMonitorForEvents(matching: .keyDown) { event in
             self.keyPressed(with: event)

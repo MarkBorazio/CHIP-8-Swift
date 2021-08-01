@@ -710,10 +710,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6sr-s3-7qd">
-                                <rect key="frame" x="299" y="10" width="204" height="52"/>
+                                <rect key="frame" x="299" y="10" width="204" height="32"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i9F-ib-ZdN">
-                                        <rect key="frame" x="-7" y="9" width="76" height="32"/>
+                                        <rect key="frame" x="-7" y="-1" width="76" height="32"/>
                                         <buttonCell key="cell" type="push" title="START" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aOu-W8-w2g">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -723,7 +723,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kal-R7-wYR">
-                                        <rect key="frame" x="67" y="9" width="70" height="32"/>
+                                        <rect key="frame" x="67" y="-1" width="70" height="32"/>
                                         <buttonCell key="cell" type="push" title="STOP" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yJw-qg-rGf">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -733,7 +733,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rkA-JI-qb9">
-                                        <rect key="frame" x="135" y="9" width="76" height="32"/>
+                                        <rect key="frame" x="135" y="-1" width="76" height="32"/>
                                         <buttonCell key="cell" type="push" title="RESET" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IDY-gM-7Fe">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -754,25 +754,24 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZPw-C4-xG2" customClass="Chip8View" customModule="CHIP_8" customModuleProvider="target">
-                                <rect key="frame" x="10" y="72" width="600" height="300"/>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="drf-VM-cu8" customClass="Chip8View" customModule="CHIP_8" customModuleProvider="target">
+                                <rect key="frame" x="20" y="62" width="600" height="300"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="Kuj-ix-WCg"/>
-                                    <constraint firstAttribute="width" secondItem="ZPw-C4-xG2" secondAttribute="height" multiplier="64:32" id="XrI-1z-mln"/>
+                                    <constraint firstAttribute="width" secondItem="drf-VM-cu8" secondAttribute="height" multiplier="64:32" id="Igm-Fw-Qgb"/>
+                                    <constraint firstAttribute="height" constant="300" placeholder="YES" id="s4j-kU-3L2"/>
                                 </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" id="2tK-c4-25E"/>
-                            </imageView>
+                            </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="l13-UO-FH0">
-                                <rect key="frame" x="620" y="72" width="171" height="300"/>
+                                <rect key="frame" x="640" y="52" width="151" height="320"/>
                                 <subviews>
                                     <stackView distribution="fillEqually" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0DK-Zp-f2J">
-                                        <rect key="frame" x="0.0" y="0.0" width="171" height="300"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="151" height="320"/>
                                         <subviews>
                                             <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dE3-DS-jcY">
-                                                <rect key="frame" x="22" y="225" width="128" height="75"/>
+                                                <rect key="frame" x="12" y="240" width="128" height="80"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rDL-af-VC3">
-                                                        <rect key="frame" x="-7" y="42" width="40" height="38"/>
+                                                        <rect key="frame" x="-7" y="47" width="40" height="38"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="rDL-af-VC3" secondAttribute="height" multiplier="1:1" id="VGv-Eh-hdp"/>
                                                         </constraints>
@@ -782,7 +781,7 @@
                                                         </buttonCell>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bBd-bb-8dd">
-                                                        <rect key="frame" x="27" y="42" width="40" height="38"/>
+                                                        <rect key="frame" x="27" y="47" width="40" height="38"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="bBd-bb-8dd" secondAttribute="height" multiplier="1:1" id="7mb-bR-lDf"/>
                                                         </constraints>
@@ -792,7 +791,7 @@
                                                         </buttonCell>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8WL-1f-u8m">
-                                                        <rect key="frame" x="61" y="42" width="40" height="38"/>
+                                                        <rect key="frame" x="61" y="47" width="40" height="38"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="8WL-1f-u8m" secondAttribute="height" multiplier="1:1" id="on0-ID-Hms"/>
                                                         </constraints>
@@ -802,7 +801,7 @@
                                                         </buttonCell>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zoP-fq-kEo">
-                                                        <rect key="frame" x="95" y="42" width="40" height="38"/>
+                                                        <rect key="frame" x="95" y="47" width="40" height="38"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="zoP-fq-kEo" secondAttribute="height" multiplier="1:1" id="jwB-SQ-DmA"/>
                                                         </constraints>
@@ -832,10 +831,10 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ovr-XN-iTD">
-                                                <rect key="frame" x="18" y="150" width="136" height="75"/>
+                                                <rect key="frame" x="8" y="160" width="136" height="80"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8ma-Xb-4gA">
-                                                        <rect key="frame" x="-7" y="40" width="42" height="40"/>
+                                                        <rect key="frame" x="-7" y="45" width="42" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="8ma-Xb-4gA" secondAttribute="height" multiplier="1:1" id="gdD-4F-fWB"/>
                                                         </constraints>
@@ -845,7 +844,7 @@
                                                         </buttonCell>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Q1-xo-aBw">
-                                                        <rect key="frame" x="29" y="40" width="42" height="40"/>
+                                                        <rect key="frame" x="29" y="45" width="42" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="7Q1-xo-aBw" secondAttribute="height" multiplier="1:1" id="GjE-ef-e6J"/>
                                                         </constraints>
@@ -855,7 +854,7 @@
                                                         </buttonCell>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="f7Z-9e-OGP">
-                                                        <rect key="frame" x="65" y="40" width="42" height="40"/>
+                                                        <rect key="frame" x="65" y="45" width="42" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="f7Z-9e-OGP" secondAttribute="height" multiplier="1:1" id="l57-dX-R2S"/>
                                                         </constraints>
@@ -865,7 +864,7 @@
                                                         </buttonCell>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gVb-gY-4Hd">
-                                                        <rect key="frame" x="101" y="40" width="42" height="40"/>
+                                                        <rect key="frame" x="101" y="45" width="42" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="gVb-gY-4Hd" secondAttribute="height" multiplier="1:1" id="8si-6o-8ar"/>
                                                         </constraints>
@@ -895,10 +894,10 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rLs-9d-s7j">
-                                                <rect key="frame" x="18" y="75" width="136" height="75"/>
+                                                <rect key="frame" x="8" y="80" width="136" height="80"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i5H-2c-s2i">
-                                                        <rect key="frame" x="-7" y="40" width="42" height="40"/>
+                                                        <rect key="frame" x="-7" y="45" width="42" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="i5H-2c-s2i" secondAttribute="height" multiplier="1:1" id="giu-uf-jJ3"/>
                                                         </constraints>
@@ -908,7 +907,7 @@
                                                         </buttonCell>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="joe-3Y-ncd">
-                                                        <rect key="frame" x="29" y="40" width="42" height="40"/>
+                                                        <rect key="frame" x="29" y="45" width="42" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="joe-3Y-ncd" secondAttribute="height" multiplier="1:1" id="JOH-Se-tKm"/>
                                                         </constraints>
@@ -918,7 +917,7 @@
                                                         </buttonCell>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="86b-aQ-ahY">
-                                                        <rect key="frame" x="65" y="40" width="42" height="40"/>
+                                                        <rect key="frame" x="65" y="45" width="42" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="86b-aQ-ahY" secondAttribute="height" multiplier="1:1" id="fgY-rE-Obt"/>
                                                         </constraints>
@@ -928,7 +927,7 @@
                                                         </buttonCell>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IIf-OD-eFf">
-                                                        <rect key="frame" x="101" y="40" width="42" height="40"/>
+                                                        <rect key="frame" x="101" y="45" width="42" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="IIf-OD-eFf" secondAttribute="height" multiplier="1:1" id="Xj0-XM-H4r"/>
                                                         </constraints>
@@ -958,10 +957,10 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uXG-FZ-7fI">
-                                                <rect key="frame" x="18" y="0.0" width="136" height="75"/>
+                                                <rect key="frame" x="8" y="0.0" width="136" height="80"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U1g-db-kxo">
-                                                        <rect key="frame" x="-7" y="40" width="42" height="40"/>
+                                                        <rect key="frame" x="-7" y="45" width="42" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="U1g-db-kxo" secondAttribute="height" multiplier="1:1" id="Mfw-03-ac7"/>
                                                         </constraints>
@@ -971,7 +970,7 @@
                                                         </buttonCell>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="24C-eg-tqj">
-                                                        <rect key="frame" x="29" y="40" width="42" height="40"/>
+                                                        <rect key="frame" x="29" y="45" width="42" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="24C-eg-tqj" secondAttribute="height" multiplier="1:1" id="clJ-Y1-OXP"/>
                                                         </constraints>
@@ -981,7 +980,7 @@
                                                         </buttonCell>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VmO-pI-WC4">
-                                                        <rect key="frame" x="65" y="40" width="42" height="40"/>
+                                                        <rect key="frame" x="65" y="45" width="42" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="VmO-pI-WC4" secondAttribute="height" multiplier="1:1" id="cgi-Js-kPw"/>
                                                         </constraints>
@@ -991,7 +990,7 @@
                                                         </buttonCell>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gXx-0h-L5j">
-                                                        <rect key="frame" x="101" y="40" width="42" height="40"/>
+                                                        <rect key="frame" x="101" y="45" width="42" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="gXx-0h-L5j" secondAttribute="height" multiplier="1:1" id="fYN-ZS-qR8"/>
                                                         </constraints>
@@ -1045,18 +1044,18 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="6sr-s3-7qd" secondAttribute="bottom" constant="10" id="39n-iV-qRD"/>
-                            <constraint firstItem="l13-UO-FH0" firstAttribute="leading" secondItem="ZPw-C4-xG2" secondAttribute="trailing" constant="10" id="Qju-3e-0pz"/>
-                            <constraint firstItem="6sr-s3-7qd" firstAttribute="top" secondItem="ZPw-C4-xG2" secondAttribute="bottom" constant="10" id="aOF-hW-NMN"/>
-                            <constraint firstItem="ZPw-C4-xG2" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="cA8-2I-nVi"/>
+                            <constraint firstItem="drf-VM-cu8" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="8Fs-Ca-KBm"/>
+                            <constraint firstItem="6sr-s3-7qd" firstAttribute="top" secondItem="drf-VM-cu8" secondAttribute="bottom" constant="20" id="Gqr-E9-Fe2"/>
+                            <constraint firstItem="drf-VM-cu8" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="ef9-JX-18Y"/>
+                            <constraint firstItem="l13-UO-FH0" firstAttribute="leading" secondItem="drf-VM-cu8" secondAttribute="trailing" constant="20" id="ilv-AN-S2I"/>
                             <constraint firstItem="l13-UO-FH0" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="10" id="kYe-9a-ISy"/>
                             <constraint firstItem="6sr-s3-7qd" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="qRc-Gp-XRD"/>
                             <constraint firstAttribute="trailing" secondItem="l13-UO-FH0" secondAttribute="trailing" constant="10" id="uvk-TO-LW4"/>
                             <constraint firstItem="6sr-s3-7qd" firstAttribute="top" secondItem="l13-UO-FH0" secondAttribute="bottom" constant="10" id="wqg-6A-H9Y"/>
-                            <constraint firstItem="ZPw-C4-xG2" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="10" id="zBz-dB-DB4"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="chip8View" destination="ZPw-C4-xG2" id="ycy-iu-fHf"/>
+                        <outlet property="chip8View" destination="drf-VM-cu8" id="x6m-II-VzL"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
