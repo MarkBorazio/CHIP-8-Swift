@@ -11,18 +11,13 @@ import AVFoundation
 
 class Audio {
     
-    private var isPlaying = false
-    var toneFrequencyHz: Int = 400
-    
     func startTone() {
-        guard !isPlaying else { return }
-        isPlaying = true
+        Synth.shared.start()
         print("PLAYING TONE")
     }
     
     func stopTone() {
-        guard isPlaying else { return }
-        isPlaying = false
+        Synth.shared.stop()
         print("STOPPING TONE")
     }
 }

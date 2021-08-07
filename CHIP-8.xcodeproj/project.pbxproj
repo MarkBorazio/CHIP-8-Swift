@@ -10,6 +10,8 @@
 		60107A1E26B56F0700F51271 /* Chip8View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60107A1D26B56F0700F51271 /* Chip8View.swift */; };
 		6037D8C126B5767F0017D978 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6037D8C026B5767F0017D978 /* Audio.swift */; };
 		6037D8C326B5A3B20017D978 /* Chip8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6037D8C226B5A3B20017D978 /* Chip8.swift */; };
+		607071AE26BED535002E7119 /* Oscillator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607071AC26BED535002E7119 /* Oscillator.swift */; };
+		607071AF26BED535002E7119 /* Synth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607071AD26BED535002E7119 /* Synth.swift */; };
 		60C9590526AC4677009D2989 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C9590426AC4677009D2989 /* AppDelegate.swift */; };
 		60C9590726AC4677009D2989 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C9590626AC4677009D2989 /* ViewController.swift */; };
 		60C9590926AC4678009D2989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60C9590826AC4678009D2989 /* Assets.xcassets */; };
@@ -72,6 +74,8 @@
 		60107A1D26B56F0700F51271 /* Chip8View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip8View.swift; sourceTree = "<group>"; };
 		6037D8C026B5767F0017D978 /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		6037D8C226B5A3B20017D978 /* Chip8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip8.swift; sourceTree = "<group>"; };
+		607071AC26BED535002E7119 /* Oscillator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Oscillator.swift; sourceTree = "<group>"; };
+		607071AD26BED535002E7119 /* Synth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Synth.swift; sourceTree = "<group>"; };
 		60C9590126AC4677009D2989 /* CHIP-8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CHIP-8.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60C9590426AC4677009D2989 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60C9590626AC4677009D2989 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +149,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		607071AB26BED469002E7119 /* Synthesizer */ = {
+			isa = PBXGroup;
+			children = (
+				607071AC26BED535002E7119 /* Oscillator.swift */,
+				607071AD26BED535002E7119 /* Synth.swift */,
+			);
+			path = Synthesizer;
+			sourceTree = "<group>";
+		};
 		60C958F826AC4677009D2989 = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +181,7 @@
 		60C9590326AC4677009D2989 /* CHIP-8 */ = {
 			isa = PBXGroup;
 			children = (
+				607071AB26BED469002E7119 /* Synthesizer */,
 				60C9594326ADB209009D2989 /* ROMs */,
 				60C9593026AC49F4009D2989 /* Emulator */,
 				60C9593A26AC55F9009D2989 /* Extensions */,
@@ -420,9 +434,11 @@
 				60C9597526ADB763009D2989 /* Number+HexString.swift in Sources */,
 				60C9593426AC4D11009D2989 /* CPU.swift in Sources */,
 				60C9593926AC5365009D2989 /* ByteConvertible.swift in Sources */,
+				607071AF26BED535002E7119 /* Synth.swift in Sources */,
 				60C9594226AD9DBB009D2989 /* BinaryInteger+BitMapping.swift in Sources */,
 				60C9590726AC4677009D2989 /* ViewController.swift in Sources */,
 				60C9590526AC4677009D2989 /* AppDelegate.swift in Sources */,
+				607071AE26BED535002E7119 /* Oscillator.swift in Sources */,
 				6037D8C126B5767F0017D978 /* Audio.swift in Sources */,
 				60107A1E26B56F0700F51271 /* Chip8View.swift in Sources */,
 				60C9594026AD92F1009D2989 /* Video.swift in Sources */,

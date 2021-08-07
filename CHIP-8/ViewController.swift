@@ -11,6 +11,7 @@ class ViewController: NSViewController {
 
     @IBOutlet var chip8View: Chip8View!
     
+    
     let chip8 = Chip8()
     
     override func viewDidLoad() {
@@ -18,7 +19,7 @@ class ViewController: NSViewController {
 
         chip8.delegate = chip8View
         
-        try! chip8.loadRomFile(fileName: "UFO")
+        try! chip8.loadRomFile(fileName: "GUESS")
         
         NSEvent.addLocalMonitorForEvents(matching: .keyDown) { event in
             self.keyPressed(with: event)
@@ -87,117 +88,4 @@ class ViewController: NSViewController {
         default: break
         }
     }
-    
-    // MARK - Button Actions
-    
-    @IBAction func onePressed(_ sender: Any) {
-    }
-    
-    @IBAction func oneReleased(_ sender: Any) {
-    }
-    
-    
-    @IBAction func twoPressed(_ sender: Any) {
-    }
-    
-    @IBAction func twoReleased(_ sender: Any) {
-    }
-    
-    
-    @IBAction func threePressed(_ sender: Any) {
-    }
-    
-    @IBAction func threeReleased(_ sender: Any) {
-    }
-    
-    
-    @IBAction func fourPressed(_ sender: Any) {
-    }
-    
-    @IBAction func fourReleased(_ sender: Any) {
-    }
-    
-    
-    @IBAction func fivePressed(_ sender: Any) {
-    }
-    
-    @IBAction func fiveReleased(_ sender: Any) {
-    }
-    
-    
-    @IBAction func sixPressed(_ sender: Any) {
-    }
-    
-    @IBAction func sixReleased(_ sender: Any) {
-    }
-    
-    
-    @IBAction func sevenPressed(_ sender: Any) {
-    }
-    
-    @IBAction func sevenReleased(_ sender: Any) {
-    }
-    
-    
-    @IBAction func eightPressed(_ sender: Any) {
-    }
-    
-    @IBAction func eightReleased(_ sender: Any) {
-    }
-    
-    
-    @IBAction func ninePressed(_ sender: Any) {
-    }
-    
-    @IBAction func nineReleased(_ sender: Any) {
-    }
-    
-    
-    @IBAction func zeroPressed(_ sender: Any) {
-    }
-    
-    @IBAction func zeroReleased(_ sender: Any) {
-    }
-    
-    
-    @IBAction func aPressed(_ sender: Any) {
-    }
-    
-    @IBAction func aReleased(_ sender: Any) {
-    }
-    
-    
-    @IBAction func bPressed(_ sender: Any) {
-    }
-    
-    @IBAction func bReleased(_ sender: Any) {
-    }
-    
-    
-    @IBAction func cPressed(_ sender: Any) {
-    }
-    
-    @IBAction func cReleased(_ sender: Any) {
-    }
-    
-    
-    @IBAction func dPressed(_ sender: Any) {
-    }
-    
-    @IBAction func dReleased(_ sender: Any) {
-    }
-    
-    
-    @IBAction func ePressed(_ sender: Any) {
-    }
-    
-    @IBAction func eReleased(_ sender: Any) {
-    }
-    
-    @IBAction func fPressed(_ sender: Any) {
-    }
-    
-    @IBAction func fReleased(_ sender: Any) {
-    }
-    
 }
