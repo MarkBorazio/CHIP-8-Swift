@@ -19,7 +19,7 @@ class ViewController: NSViewController {
 
         chip8.delegate = chip8View
         
-        try! chip8.loadRomFile(fileName: "GUESS")
+        try! chip8.loadRomFile(fileName: "BRIX")
         
         NSEvent.addLocalMonitorForEvents(matching: .keyDown) { event in
             self.keyPressed(with: event)
